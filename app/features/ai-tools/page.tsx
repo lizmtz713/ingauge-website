@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { 
   Brain, MessageCircle, RotateCcw, Users, PenTool, 
-  HandHelping, Search, Heart, Sparkles, CheckCircle2,
+  Smile, Search, Heart, Sparkles, CheckCircle2,
   Bot, Shield, Zap, Lock, ChevronRight, Star
 } from 'lucide-react'
 import Navigation from '../../components/Navigation'
@@ -138,7 +138,7 @@ const aiTools = [
   {
     id: 'help',
     name: 'Help',
-    icon: HandHelping,
+    icon: Heart,
     color: '#EF4444',
     tagline: 'Help someone else',
     description: 'When someone you care about is struggling, Help gives you guidance on what to say, what NOT to say, and how to actually support them.',
