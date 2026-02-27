@@ -1,0 +1,6 @@
+export { default as Navigation } from './Navigation'
+export { default as Footer } from './Footer'
+export { default as CTA } from './CTA'
+export { default as FAQ } from './FAQ'
+export { default as FeatureHero } from './FeatureHero'
+export { default as Testimonials } from './Testimonials'
