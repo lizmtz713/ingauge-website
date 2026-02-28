@@ -7,7 +7,7 @@ import {
   Brain, Heart, Compass, Users, Zap, Target, 
   BookOpen, MessageCircle, Shield, Sparkles,
   ChevronRight, Apple, Play, Check, Star,
-  Globe, Activity, TrendingUp
+  Globe, Activity, TrendingUp, Mail, Lock, Send
 } from 'lucide-react'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
@@ -553,22 +553,22 @@ function FeaturesSection() {
       color: '#3B82F6'
     },
     {
+      icon: Mail,
+      title: 'Heart Inbox',
+      description: 'A new way to communicate. Send what you can\'t say — even anonymously.',
+      color: '#F472B6'
+    },
+    {
+      icon: Sparkles,
+      title: 'Age-Adaptive',
+      description: 'Every word adapts to your age. Teens to seniors — everyone understands.',
+      color: '#10B981'
+    },
+    {
       icon: Shield,
       title: 'Crisis Support',
       description: 'Built-in support for when things get hard. You\'re never alone.',
       color: '#EF4444'
-    },
-    {
-      icon: Sparkles,
-      title: 'Age-Adaptive Content',
-      description: 'Every word adapts to your age and developmental level. Teens to seniors—everyone understands.',
-      color: '#10B981'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Pattern Recognition',
-      description: 'See your trends over time. What triggers you? What helps?',
-      color: '#F59E0B'
     },
   ]
   
@@ -765,6 +765,135 @@ function EducationSection() {
           <p className="text-ingauge-muted">
             All content is <span className="text-ingauge-accent font-medium">age-gated appropriately</span> and 
             <span className="text-ingauge-accent font-medium"> trauma-informed</span>. Crisis resources always available.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// Heart Inbox Section
+function HeartInboxSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  
+  const mailTypes = [
+    {
+      icon: Send,
+      title: 'Open',
+      description: 'They see who sent it',
+      color: '#8B5CF6'
+    },
+    {
+      icon: Lock,
+      title: 'Anonymous',
+      description: 'They only know it\'s from someone who loves them',
+      color: '#EC4899'
+    },
+    {
+      icon: Heart,
+      title: 'Soft Share',
+      description: 'They accept when ready',
+      color: '#10B981'
+    },
+  ]
+  
+  return (
+    <section ref={ref} className="py-32 relative overflow-hidden bg-gradient-to-b from-ingauge-bg to-ingauge-surface/50">
+      <div className="absolute inset-0">
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-[100px]" />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium mb-6">
+            <span className="text-pink-400">💜</span> New Communication Channel
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Heart Inbox — <span className="gradient-text">Mail for the Mind</span>
+          </h2>
+          <p className="text-xl text-ingauge-muted max-w-3xl mx-auto">
+            We have physical mailboxes. We have email. But nothing for the things that actually matter.
+            Heart Inbox is where you send what you can't text — and receive truth with love.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {mailTypes.map((type, i) => (
+            <motion.div
+              key={type.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1 }}
+              className="glass rounded-2xl p-6 text-center"
+            >
+              <div 
+                className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center"
+                style={{ backgroundColor: `${type.color}20` }}
+              >
+                <type.icon className="w-7 h-7" style={{ color: type.color }} />
+              </div>
+              <h3 className="text-xl font-bold mb-2">{type.title}</h3>
+              <p className="text-ingauge-muted text-sm">{type.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4 }}
+          className="glass rounded-3xl p-8 max-w-4xl mx-auto"
+        >
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Why Anonymous Matters</h3>
+              <ul className="space-y-3 text-ingauge-muted">
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                  <span>Tell hard truths without fear of judgment</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                  <span>No retaliation — they don't know who sent it</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                  <span>Collective care — "someone who loves you wants you to know..."</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                  <span>AI-moderated to prevent abuse</span>
+                </li>
+              </ul>
+            </div>
+            <div className="glass rounded-2xl p-6 bg-ingauge-bg/50">
+              <div className="text-sm text-ingauge-muted mb-3">Example anonymous Heart Mail:</div>
+              <div className="space-y-3">
+                <div className="text-pink-400 font-medium">💜 Someone in your Circle sent:</div>
+                <p className="text-white italic">
+                  "We've noticed you haven't been yourself lately. You don't have to carry everything alone. We're here if you need us."
+                </p>
+                <div className="text-xs text-ingauge-muted">— Sent with love by someone who cares ❤️</div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <p className="text-lg text-ingauge-muted max-w-2xl mx-auto">
+            <strong className="text-white">Heart Notes + Heart Inbox</strong> = write what you need to say, 
+            and send it when you're ready. Or keep it forever. Your truth, your timing.
           </p>
         </motion.div>
       </div>
@@ -1136,6 +1265,7 @@ export default function Home() {
       <FeaturesSection />
       <AgeAdaptiveSection />
       <EducationSection />
+      <HeartInboxSection />
       <PHOSMSection />
       <TestimonialsSection />
       <PricingSection />

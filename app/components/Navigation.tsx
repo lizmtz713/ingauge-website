@@ -8,9 +8,9 @@ import { Activity, Menu, X, ChevronDown } from 'lucide-react'
 const features = [
   { name: 'The 6 Gauges', href: '/features/gauges', desc: 'Your personal dashboard' },
   { name: 'Human Manual', href: '/features/human-manual', desc: '48+ life lessons' },
-  { name: 'AI Tools', href: '/features/ai-tools', desc: '7 AI-powered tools' },
+  { name: 'AI Tools', href: '/features/ai-tools', desc: '8 AI-powered tools' },
   { name: 'Circle', href: '/features/circle', desc: 'Relationship intelligence' },
-  { name: 'Prompt Generator', href: '/features/prompt-generator', desc: 'Personalized AI prompts' },
+  { name: 'Heart Inbox', href: '/features/heart-inbox', desc: 'Mail for the mind' },
   { name: 'World Temperature', href: '/features/world-temperature', desc: 'How humanity is feeling' },
 ]
 

@@ -9,7 +9,7 @@ const footerLinks = {
     { name: 'Human Manual', href: '/features/human-manual' },
     { name: 'AI Tools', href: '/features/ai-tools' },
     { name: 'Circle', href: '/features/circle' },
-    { name: 'Prompt Generator', href: '/features/prompt-generator' },
+    { name: 'Heart Inbox', href: '/features/heart-inbox' },
     { name: 'World Temperature', href: '/features/world-temperature' },
   ],
   company: [
