@@ -667,9 +667,9 @@ function PersonologySection() {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {[
-            { label: 'Tendencies', color: '#8B5CF6' },
-            { label: 'Strengths', color: '#10B981' },
-            { label: 'Blind spots', color: '#F59E0B' },
+            { label: 'Tendencies', color: '#8B5CF6', description: 'Natural patterns in how you think, feel, and react. Your default settings.' },
+            { label: 'Strengths', color: '#10B981', description: 'What comes naturally to you. The gifts your personality brings to relationships.' },
+            { label: 'Blind spots', color: '#F59E0B', description: 'Where you might miss things. Not flaws—just areas that need extra attention.' },
           ].map((item, i) => (
             <div key={item.label} className="glass rounded-2xl p-6 card-hover" style={{ borderTop: `3px solid ${item.color}` }}>
               <div className="flex items-center gap-3 mb-2">
@@ -678,7 +678,7 @@ function PersonologySection() {
                 </div>
                 <span className="font-semibold">{item.label}</span>
               </div>
-              <p className="text-ingauge-muted text-sm">Personalized from your birth date and woven into your gauges and insights.</p>
+              <p className="text-ingauge-muted text-sm">{item.description}</p>
             </div>
           ))}
         </motion.div>
@@ -773,6 +773,19 @@ function TemperatureSharingSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
+  // Temperature color by value: 70+ green, 50-69 yellow, below 50 orange/red
+  const getTempColor = (temp: number) => {
+    if (temp >= 70) return '#10B981' // green
+    if (temp >= 50) return '#F59E0B' // yellow
+    return '#EF4444' // orange/red
+  }
+
+  const circleMembers = [
+    { name: 'Sarah', temp: 74 },
+    { name: 'Jake', temp: 52 },
+    { name: 'Maya', temp: 31 },
+  ].map((m) => ({ ...m, color: getTempColor(m.temp) }))
+
   return (
     <section ref={ref} className="py-32 relative overflow-hidden">
       <div className="absolute top-1/2 right-0 w-80 h-80 bg-gauge-alignment/10 rounded-full blur-[100px]" />
@@ -815,8 +828,17 @@ function TemperatureSharingSection() {
             </div>
           </div>
           <div className="glass rounded-3xl p-8">
-            <div className="text-5xl font-bold gradient-text mb-2">72°</div>
-            <p className="text-ingauge-muted">Example: balanced · visible to Circle</p>
+            <div className="text-5xl font-bold mb-2" style={{ color: getTempColor(72) }}>72°</div>
+            <p className="text-ingauge-muted mb-6">Example: balanced · visible to Circle</p>
+            <div className="space-y-3 pt-4 border-t border-ingauge-surface">
+              <p className="text-sm font-medium text-ingauge-muted">Your Circle</p>
+              {circleMembers.map((member) => (
+                <div key={member.name} className="flex items-center justify-between">
+                  <span className="text-white">{member.name}</span>
+                  <span className="font-semibold" style={{ color: member.color }}>{member.temp}°</span>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
