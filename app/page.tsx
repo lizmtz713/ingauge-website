@@ -560,8 +560,8 @@ function FeaturesSection() {
     },
     {
       icon: Sparkles,
-      title: 'Smart Prompts',
-      description: 'Prompts that know you. Personalized check-ins based on your patterns.',
+      title: 'Age-Adaptive Content',
+      description: 'Every word adapts to your age and developmental level. Teens to seniors—everyone understands.',
       color: '#10B981'
     },
     {
@@ -611,6 +611,162 @@ function FeaturesSection() {
             </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+// Age-Adaptive Section
+function AgeAdaptiveSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  
+  const ageExamples = [
+    {
+      age: 'Teen (13-17)',
+      example: '"Your brain\'s alarm system is going off—that\'s why your heart pounds and you want to run."',
+      color: '#EC4899'
+    },
+    {
+      age: 'Young Adult (18-25)',
+      example: '"Your sleep schedule is chaos? That\'s wrecking your mood more than you realize."',
+      color: '#8B5CF6'
+    },
+    {
+      age: 'Adult (26-45)',
+      example: '"Running on empty makes you worse at everything—self-care isn\'t selfish, it\'s strategic."',
+      color: '#3B82F6'
+    },
+    {
+      age: 'Mature (46+)',
+      example: '"Acknowledging difficulty isn\'t pessimism—it\'s honesty. From that ground, you can make real choices."',
+      color: '#10B981'
+    },
+  ]
+  
+  return (
+    <section ref={ref} className="py-32 relative overflow-hidden bg-ingauge-surface/30">
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-pink-500/20 rounded-full blur-[100px]" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px]" />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium mb-6">
+            <span className="text-green-400">✨</span> Industry First
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Speaks <span className="gradient-text">Your Language</span>
+          </h2>
+          <p className="text-xl text-ingauge-muted max-w-3xl mx-auto">
+            The same concept, explained differently for a 15-year-old and a 50-year-old. 
+            Every lesson, every AI response, every check-in adapts to your age and developmental level.
+          </p>
+        </motion.div>
+        
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {ageExamples.map((item, i) => (
+            <motion.div
+              key={item.age}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1 }}
+              className="glass rounded-2xl p-6"
+            >
+              <div 
+                className="inline-block px-3 py-1 rounded-full text-sm font-medium mb-4"
+                style={{ backgroundColor: `${item.color}20`, color: item.color }}
+              >
+                {item.age}
+              </div>
+              <p className="text-ingauge-muted italic">{item.example}</p>
+            </motion.div>
+          ))}
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <p className="text-lg text-ingauge-muted max-w-2xl mx-auto">
+            <strong className="text-white">No dumbing down. No talking over heads.</strong> Just the right words 
+            for where you are in life—so understanding yourself doesn't require a psychology degree.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// Comprehensive Education Section
+function EducationSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  
+  const topics = [
+    { icon: Heart, label: 'Love & Relationships', color: '#EC4899' },
+    { icon: Shield, label: 'Consent & Boundaries', color: '#EF4444' },
+    { icon: Users, label: 'LGBTQ+ Identity', color: '#8B5CF6' },
+    { icon: Target, label: 'Healthy vs. Toxic', color: '#F59E0B' },
+    { icon: Zap, label: 'Safety & Protection', color: '#3B82F6' },
+    { icon: Compass, label: 'Survivor Support', color: '#10B981' },
+  ]
+  
+  return (
+    <section ref={ref} className="py-32 relative">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            The Education <span className="gradient-text">You Deserved</span>
+          </h2>
+          <p className="text-xl text-ingauge-muted max-w-3xl mx-auto">
+            Real answers to real questions—about bodies, relationships, identity, and safety. 
+            Science-based, judgment-free, age-appropriate. What schools should teach but don't.
+          </p>
+        </motion.div>
+        
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {topics.map((topic, i) => (
+            <motion.div
+              key={topic.label}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: i * 0.1 }}
+              className="glass rounded-full px-5 py-3 flex items-center gap-3"
+            >
+              <topic.icon className="w-5 h-5" style={{ color: topic.color }} />
+              <span className="font-medium">{topic.label}</span>
+            </motion.div>
+          ))}
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6 }}
+          className="glass rounded-3xl p-8 max-w-3xl mx-auto text-center"
+        >
+          <p className="text-lg text-ingauge-muted mb-4">
+            Through the <strong className="text-white">LOVE tool</strong> and <strong className="text-white">Human Manual</strong>, 
+            get honest, scientifically-grounded information on the topics that matter—from sexual health 
+            to recognizing manipulation, from identity exploration to healing from harm.
+          </p>
+          <p className="text-ingauge-muted">
+            All content is <span className="text-ingauge-accent font-medium">age-gated appropriately</span> and 
+            <span className="text-ingauge-accent font-medium"> trauma-informed</span>. Crisis resources always available.
+          </p>
+        </motion.div>
       </div>
     </section>
   )
@@ -978,6 +1134,8 @@ export default function Home() {
       <ProblemSection />
       <GaugesSection />
       <FeaturesSection />
+      <AgeAdaptiveSection />
+      <EducationSection />
       <PHOSMSection />
       <TestimonialsSection />
       <PricingSection />
