@@ -553,10 +553,16 @@ function FeaturesSection() {
       color: '#3B82F6'
     },
     {
+      icon: Activity,
+      title: 'Cycle Intelligence',
+      description: 'Your cycle affects everything. Now the app knows it too. HealthKit integration.',
+      color: '#F472B6'
+    },
+    {
       icon: Mail,
       title: 'Heart Inbox',
       description: 'A new way to communicate. Send what you can\'t say — even anonymously.',
-      color: '#F472B6'
+      color: '#EC4899'
     },
     {
       icon: Sparkles,

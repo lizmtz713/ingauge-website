@@ -10,6 +10,7 @@ const features = [
   { name: 'Human Manual', href: '/features/human-manual', desc: '48+ life lessons' },
   { name: 'AI Tools', href: '/features/ai-tools', desc: '8 AI-powered tools' },
   { name: 'Circle', href: '/features/circle', desc: 'Relationship intelligence' },
+  { name: 'Cycle Intelligence', href: '/features/cycle-intelligence', desc: 'Your cycle affects everything' },
   { name: 'Heart Inbox', href: '/features/heart-inbox', desc: 'Mail for the mind' },
   { name: 'World Temperature', href: '/features/world-temperature', desc: 'How humanity is feeling' },
 ]
