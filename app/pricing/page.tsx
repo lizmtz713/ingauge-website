@@ -10,6 +10,25 @@ import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import FAQ from '../components/FAQ'
 
+type Feature = {
+  name: string
+  included: boolean
+  highlight?: boolean
+}
+
+type Plan = {
+  name: string
+  tagline: string
+  price: string
+  period: string
+  yearlyPrice?: string
+  yearlySavings?: string
+  description: string
+  features: Feature[]
+  cta: string
+  featured: boolean
+}
+
 const faqItems = [
   {
     question: "Can I try before I buy?",
@@ -45,7 +64,7 @@ const faqItems = [
   },
 ]
 
-const plans = [
+const plans: Plan[] = [
   {
     name: 'Free',
     tagline: 'Get started with the essentials',
@@ -226,11 +245,11 @@ function HeroSection() {
                 {plan.features.map((feature, j) => (
                   <li key={j} className={`flex items-center gap-3 text-sm ${!feature.included ? 'text-ingauge-muted/50' : ''}`}>
                     {feature.included ? (
-                      <Check className={`w-5 h-5 shrink-0 ${feature.highlight as boolean ? 'text-ingauge-accent' : 'text-green-400'}`} />
+                      <Check className={`w-5 h-5 shrink-0 ${feature.highlight ? 'text-ingauge-accent' : 'text-green-400'}`} />
                     ) : (
                       <X className="w-5 h-5 text-ingauge-muted/30 shrink-0" />
                     )}
-                    <span className={feature.highlight as boolean ? 'font-medium' : ''}>{feature.name}</span>
+                    <span className={feature.highlight ? 'font-medium' : ''}>{feature.name}</span>
                   </li>
                 ))}
               </ul>
