@@ -673,6 +673,10 @@ function AgeAdaptiveSection() {
             The same concept, explained differently for a 15-year-old and a 50-year-old. 
             Every lesson, every AI response, every check-in adapts to your age and developmental level.
           </p>
+          <p className="text-lg text-ingauge-muted mt-4 max-w-2xl mx-auto">
+            <span className="text-green-400 font-semibold">🇲🇽 También disponible en español.</span> Full Spanish support 
+            with culturally-adapted content — not just translations.
+          </p>
         </motion.div>
         
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -705,6 +709,49 @@ function AgeAdaptiveSection() {
             <strong className="text-white">No dumbing down. No talking over heads.</strong> Just the right words 
             for where you are in life—so understanding yourself doesn't require a psychology degree.
           </p>
+        </motion.div>
+        
+        {/* Spanish Support Highlight */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6 }}
+          className="mt-12 glass rounded-3xl p-8 max-w-4xl mx-auto"
+        >
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-bold mb-4">
+                <span className="text-3xl mr-2">🇲🇽</span> 
+                Full Spanish Support
+              </h3>
+              <p className="text-ingauge-muted mb-4">
+                Not just translations — <strong className="text-white">culturally-adapted content</strong> for the Latino community. 
+                We understand familismo, respeto, and why "los problemas se quedan en casa" keeps people from getting help.
+              </p>
+              <ul className="space-y-2 text-sm text-ingauge-muted">
+                <li className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> All AI conversations in Spanish
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> Human Manual fully translated
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> Crisis resources in Spanish
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span> Supports code-switching naturally
+                </li>
+              </ul>
+            </div>
+            <div className="glass rounded-2xl p-6 text-center">
+              <p className="text-lg italic text-ingauge-muted mb-4">
+                "No estás roto. Eres un sistema. Y ahora tienes un tablero."
+              </p>
+              <p className="text-sm text-ingauge-muted">
+                — The same philosophy, in your language
+              </p>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
