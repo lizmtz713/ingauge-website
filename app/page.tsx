@@ -7,7 +7,8 @@ import {
   Brain, Heart, Compass, Users, Zap, Target, 
   BookOpen, MessageCircle, Shield, Sparkles,
   ChevronRight, Apple, Play, Check, Star,
-  Globe, Activity, TrendingUp, Mail, Lock, Send
+  Globe, Activity, TrendingUp, Mail, Lock, Send,
+  Calendar, Thermometer, Gauge
 } from 'lucide-react'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
@@ -537,7 +538,7 @@ function FeaturesSection() {
     {
       icon: BookOpen,
       title: 'Human Manual',
-      description: '48+ lessons on understanding yourself. The manual you were never given.',
+      description: '100+ lessons on understanding yourself. The manual you were never given.',
       color: '#8B5CF6'
     },
     {
@@ -575,6 +576,18 @@ function FeaturesSection() {
       title: 'Crisis Support',
       description: 'Built-in support for when things get hard. You\'re never alone.',
       color: '#EF4444'
+    },
+    {
+      icon: TrendingUp,
+      title: 'Pattern Detection',
+      description: 'Your gauges tell a story. InGauge reads it.',
+      color: '#10B981'
+    },
+    {
+      icon: Sparkles,
+      title: '101 Discoveries',
+      description: 'Bite-sized psychological insights.',
+      color: '#F59E0B'
     },
   ]
   
@@ -617,6 +630,303 @@ function FeaturesSection() {
             </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+// Personology Section - birthday-based personality profiles
+function PersonologySection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  return (
+    <section ref={ref} className="py-32 relative overflow-hidden">
+      <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-ingauge-accent/10 rounded-full blur-[100px]" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium mb-6">
+            <Calendar className="w-4 h-4 text-ingauge-accent" />
+            Personality from your birthday
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="gradient-text">Personology</span>
+          </h2>
+          <p className="text-xl text-ingauge-muted max-w-2xl mx-auto">
+            Birthday-based personality profiles. Understand your tendencies, strengths, and blind spots—personalized from day one.
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {[
+            { label: 'Tendencies', color: '#8B5CF6' },
+            { label: 'Strengths', color: '#10B981' },
+            { label: 'Blind spots', color: '#F59E0B' },
+          ].map((item, i) => (
+            <div key={item.label} className="glass rounded-2xl p-6 card-hover" style={{ borderTop: `3px solid ${item.color}` }}>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${item.color}20` }}>
+                  <Calendar className="w-5 h-5" style={{ color: item.color }} />
+                </div>
+                <span className="font-semibold">{item.label}</span>
+              </div>
+              <p className="text-ingauge-muted text-sm">Personalized from your birth date and woven into your gauges and insights.</p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// Talk to Psych Section - AI companion with mock chat UI
+function TalkToPsychSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const mockMessages = [
+    { from: 'user', text: "I've been feeling really low this week." },
+    { from: 'psych', text: "I hear you. Your Body and State gauges have been lower too—that often goes together. What's one small thing that usually helps when you feel this way?" },
+    { from: 'user', text: "Walking. I haven't been doing it." },
+    { from: 'psych', text: "That makes sense. No judgment—just data. Want to try a 10-minute walk and check your gauges after? Sometimes seeing the shift helps." },
+  ]
+
+  return (
+    <section ref={ref} className="py-32 relative overflow-hidden bg-ingauge-surface/30">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium mb-6">
+            <MessageCircle className="w-4 h-4 text-ingauge-accent" />
+            AI companion
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Talk to <span className="gradient-text">Psych</span>
+          </h2>
+          <p className="text-xl text-ingauge-muted max-w-2xl mx-auto">
+            Your AI companion that knows your gauges, your history, and your goals. Real conversations—with context.
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="glass rounded-3xl p-6 max-w-2xl mx-auto card-hover"
+        >
+          <div className="flex items-center gap-3 pb-4 border-b border-ingauge-surface">
+            <div className="w-10 h-10 rounded-full bg-ingauge-accent/20 flex items-center justify-center">
+              <Brain className="w-5 h-5 text-ingauge-accent" />
+            </div>
+            <div>
+              <div className="font-semibold">Psych</div>
+              <div className="text-xs text-ingauge-muted">AI companion · knows your gauges</div>
+            </div>
+          </div>
+          <div className="space-y-4 mt-4">
+            {mockMessages.map((msg, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: msg.from === 'user' ? 10 : -10 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.3 + i * 0.1 }}
+                className={`flex ${msg.from === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
+                <div
+                  className={`max-w-[85%] rounded-2xl px-4 py-3 ${
+                    msg.from === 'user'
+                      ? 'bg-ingauge-accent/20 text-white'
+                      : 'bg-ingauge-surface/80 text-ingauge-muted'
+                  }`}
+                >
+                  {msg.text}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="mt-4 flex gap-2">
+            <input
+              type="text"
+              placeholder="Type a message..."
+              className="flex-1 rounded-xl bg-ingauge-bg/50 border border-ingauge-surface px-4 py-3 text-sm text-white placeholder:text-ingauge-muted focus:outline-none focus:ring-2 focus:ring-ingauge-accent"
+              readOnly
+            />
+            <button className="btn-primary px-4 py-3 rounded-xl">Send</button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// Temperature Sharing Section - Circle temperature sharing
+function TemperatureSharingSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  return (
+    <section ref={ref} className="py-32 relative overflow-hidden">
+      <div className="absolute top-1/2 right-0 w-80 h-80 bg-gauge-alignment/10 rounded-full blur-[100px]" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium mb-6">
+            <Thermometer className="w-4 h-4 text-ingauge-accent" />
+            Circle
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Share your <span className="gradient-text">temperature</span>
+          </h2>
+          <p className="text-xl text-ingauge-muted max-w-2xl mx-auto">
+            Let your Circle see how you're doing—without oversharing. One number, real connection. Choose who sees your temperature and when.
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto"
+        >
+          <div className="glass rounded-3xl p-8 card-hover">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-14 h-14 rounded-2xl bg-ingauge-accent/20 flex items-center justify-center">
+                <Thermometer className="w-7 h-7 text-ingauge-accent" />
+              </div>
+              <h3 className="text-xl font-bold">Your temperature</h3>
+            </div>
+            <p className="text-ingauge-muted mb-6">One aggregate score from your gauges. Simple for others to read, private by default.</p>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
+                <Users className="w-6 h-6 text-green-400" />
+              </div>
+              <p className="text-sm text-ingauge-muted">Share with specific Circle members or keep it for yourself.</p>
+            </div>
+          </div>
+          <div className="glass rounded-3xl p-8">
+            <div className="text-5xl font-bold gradient-text mb-2">72°</div>
+            <p className="text-ingauge-muted">Example: balanced · visible to Circle</p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// Relational Memory Section - AI That Actually Remembers
+function RelationalMemorySection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  return (
+    <section ref={ref} className="py-32 relative overflow-hidden bg-ingauge-surface/30">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium mb-6">
+            <Brain className="w-4 h-4 text-ingauge-accent" />
+            Context that sticks
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            AI that <span className="gradient-text">actually remembers</span>
+          </h2>
+          <p className="text-xl text-ingauge-muted max-w-2xl mx-auto">
+            Your conversations, your patterns, and what matters to you—all in context. No starting from zero every time.
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="grid md:grid-cols-3 gap-6"
+        >
+          {[
+            { title: 'Conversations', desc: 'What you shared last week shapes this week\'s suggestions.', color: '#8B5CF6' },
+            { title: 'Patterns', desc: 'Seasonal slumps, good days—the AI sees your trends.', color: '#EC4899' },
+            { title: 'Goals', desc: 'Your stated goals inform every response and nudge.', color: '#10B981' },
+          ].map((item, i) => (
+            <div key={item.title} className="glass rounded-2xl p-6 card-hover" style={{ borderTop: `3px solid ${item.color}` }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${item.color}20` }}>
+                <Brain className="w-5 h-5" style={{ color: item.color }} />
+              </div>
+              <h3 className="font-bold mb-2">{item.title}</h3>
+              <p className="text-ingauge-muted text-sm">{item.desc}</p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// System Intelligence Section - Capacity/Stabilization modes
+function SystemIntelligenceSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  const modes = [
+    { name: 'Capacity', desc: 'When you have bandwidth. Full insights, suggestions, and learning.', color: '#10B981', icon: Zap },
+    { name: 'Stabilization', desc: 'When you\'re low. Gentle support, fewer asks, crisis resources close.', color: '#F59E0B', icon: Shield },
+  ]
+
+  return (
+    <section ref={ref} className="py-32 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium mb-6">
+            <Gauge className="w-4 h-4 text-ingauge-accent" />
+            Adaptive system
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="gradient-text">Capacity</span> & <span className="gradient-text">Stabilization</span>
+          </h2>
+          <p className="text-xl text-ingauge-muted max-w-2xl mx-auto">
+            InGauge adapts to your current state. Capacity mode when you can grow; Stabilization mode when you need to hold steady.
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+        >
+          {modes.map((mode, i) => (
+            <motion.div
+              key={mode.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 + i * 0.1 }}
+              className="glass rounded-3xl p-8 card-hover"
+              style={{ borderTop: `4px solid ${mode.color}` }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: `${mode.color}20` }}>
+                  <mode.icon className="w-7 h-7" style={{ color: mode.color }} />
+                </div>
+                <h3 className="text-2xl font-bold">{mode.name}</h3>
+              </div>
+              <p className="text-ingauge-muted">{mode.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )
@@ -1174,7 +1484,7 @@ function PricingSection() {
       description: 'Full access to your cockpit',
       features: [
         'Everything in Free',
-        'Full Human Manual (48+ lessons)',
+        'Full Human Manual (100+ lessons)',
         'Unlimited AI tools',
         'Circle relationship tracking',
         'Pattern insights',
@@ -1316,6 +1626,11 @@ export default function Home() {
       <ProblemSection />
       <GaugesSection />
       <FeaturesSection />
+      <PersonologySection />
+      <TalkToPsychSection />
+      <TemperatureSharingSection />
+      <RelationalMemorySection />
+      <SystemIntelligenceSection />
       <AgeAdaptiveSection />
       <EducationSection />
       <HeartInboxSection />
